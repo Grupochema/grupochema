@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C.H.E.M.A. Andamios y Escaleras – Alquiler en Chilca, Cañete y Sur de Lima</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ── FAVICON ── -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --carbon: #0f0f0f;
+      --steel: #1a1a1a;
+      --plate: #242424;
+      --grid: #2e2e2e;
+      --muted: #5a5a5a;
+      --light: #a0a0a0;
+      --yellow: #17695F;
+      --yellow-hot: #0f4e46;
+      --white: #f5f5f5;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--carbon);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .display {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── STEEL TEXTURE ── */
+    .steel-bg {
+      background-color: var(--steel);
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(0deg,  rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+    }
+
+    /* ── HEADER ── */
+    #header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(10,10,10,0.96);
+      border-bottom: 2px solid var(--yellow);
+      backdrop-filter: blur(8px);
+    }
+    .logo-icon { font-size: 1.9rem; line-height: 1; }
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--yellow); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 60%, rgba(23,105,95,0.08) 100%),
+        url('https://lh3.googleusercontent.com/p/AF1QipNdNL-N1knFaQpizbs4BO9wCS0z0Toe2xfNEgJG=s680-w680-h510-rw') center/cover no-repeat;
+    }
+    /* diagonal stripe accent */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 18px,
+        rgba(23,105,95,0.03) 18px,
+        rgba(23,105,95,0.03) 19px
+      );
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      padding: 4px 14px;
+      text-transform: uppercase;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
+    }
+    .hero-title {
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+    .hero-title span { color: var(--yellow); }
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .price-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(23,105,95,0.12);
+      border: 1.5px solid var(--yellow);
+      padding: 10px 22px;
+      margin-top: 1.2rem;
+    }
+    .price-badge .price-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--light);
+    }
+    .price-badge .price-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 1.9rem;
+      color: var(--yellow); line-height: 1;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--yellow);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 15px 34px;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .btn-cta:hover { background: var(--yellow-hot); transform: translateX(4px); }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--yellow);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 28px; height: 2px; background: var(--yellow);
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; text-transform: uppercase; line-height: 1.05;
+    }
+
+    /* ── PRODUCT CARDS ── */
+    .card {
+      background: var(--plate);
+      border: 1px solid var(--grid);
+      border-top: 3px solid var(--yellow);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; right: -60px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(23,105,95,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(23,105,95,0.18);
+    }
+    .card-icon {
+      font-size: 2.8rem; line-height: 1;
+      margin-bottom: 12px;
+    }
+    .card-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--yellow);
+    }
+    .spec-pill {
+      display: inline-block;
+      background: var(--grid);
+      border: 1px solid var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; margin: 3px 2px;
+      color: var(--light);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 10px 22px;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--yellow); color: #fff; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--yellow);
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: #fff; line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.2); }
+
+    /* ── MAP SECTION ── */
+    #ubicacion { background: var(--steel); }
+    .map-frame {
+      border: 2px solid var(--grid);
+      border-top: 3px solid var(--yellow);
+      overflow: hidden;
+      height: 460px;
+    }
+    @media (max-width: 768px) {
+      .map-frame { height: 300px; }
+    }
+    .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── HORARIO SECTION ── */
+    #horario {
+      background: var(--carbon);
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    #horario::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -55deg, transparent, transparent 22px,
+        rgba(23,105,95,0.025) 22px, rgba(23,105,95,0.025) 23px
+      );
+      pointer-events: none;
+    }
+    .horario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+    }
+    @media (max-width: 768px) {
+      .horario-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+    .horario-table {
+      background: var(--plate);
+      border: 1px solid var(--grid);
+      border-top: 3px solid var(--yellow);
+      overflow: hidden;
+    }
+    .horario-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 22px;
+      border-bottom: 1px solid var(--grid);
+      transition: background 0.2s;
+    }
+    .horario-row:last-child { border-bottom: none; }
+    .horario-row.today {
+      background: rgba(23,105,95,0.12);
+      border-left: 3px solid var(--yellow);
+      padding-left: 19px;
+    }
+    .horario-dia {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    .horario-row.today .horario-dia { color: var(--white); }
+    .horario-hora {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .horario-row.today .horario-hora { color: var(--yellow); font-weight: 700; }
+    .horario-cerrado {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e05252;
+    }
+    .horario-row.today .horario-cerrado { color: #ff6b6b; }
+    .today-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(23,105,95,0.2);
+      border: 1px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      margin-left: 10px;
+    }
+
+    /* Live Badge */
+    .live-badge-wrap {
+      background: var(--plate);
+      border: 1px solid var(--grid);
+      border-top: 3px solid var(--yellow);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      transition: all 0.4s;
+    }
+    .live-badge.abierto {
+      background: rgba(34,197,94,0.12);
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+    .live-badge.cerrado {
+      background: rgba(239,68,68,0.1);
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+    .live-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .live-badge.abierto .live-dot {
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
+      animation: pulse-live 1.8s infinite;
+    }
+    .live-badge.cerrado .live-dot {
+      background: #ef4444;
+    }
+    @keyframes pulse-live {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    .live-info-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .live-info-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+    .live-divider {
+      height: 1px;
+      background: var(--grid);
+    }
+
+    /* ── FEATURES LIST ── */
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--grid);
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--yellow); flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 24px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.7);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+    .wa-pulse {
+      position: absolute; top: -3px; right: -3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--yellow);
+      animation: pulse-ring 1.8s infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1); opacity: 1; }
+      70%  { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 2px solid var(--grid);
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--yellow);
+    }
+    .footer-acro {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem; color: var(--muted);
+      line-height: 1.8; font-style: italic;
+    }
+    .footer-acro strong { color: var(--yellow); font-style: normal; }
+    .footer-link {
+      color: var(--light); font-size: 0.85rem;
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; transition: color 0.2s;
+      margin-bottom: 10px;
+    }
+    .footer-link:hover { color: var(--yellow); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* safety stripe top border hero */
+    .safety-stripe {
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--yellow) 0px, var(--yellow) 16px,
+        #000 16px, #000 32px
+      );
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       ── PARALLAX SYSTEM ──
+       Solo desktop (≥ 769px). En móvil/tablet se desactiva
+       completamente para ahorrar batería y evitar glitches.
+    ═══════════════════════════════════════════════════════ */
+
+    /* 1. HERO BG — desplazamiento más lento que el contenido */
+    @media (min-width: 769px) {
+      .hero-bg {
+        /* background-attachment:fixed hace que la imagen quede
+           "anclada" al viewport → efecto parallax nativo CSS,
+           cero JS, cero jank */
+        background-attachment: fixed;
+        /* Oversized para que nunca quede vacío al desplazarse */
+        background-size: cover;
+        will-change: transform;
+      }
+    }
+
+    /* 2. CARDS — estado inicial: ocultas + ligero desplazamiento */
+    .px-card {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+      will-change: transform, opacity;
+    }
+    .px-card.px-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Retraso escalonado para las tres cards */
+    .px-card:nth-child(2) { transition-delay: 0.1s; }
+    .px-card:nth-child(3) { transition-delay: 0.2s; }
+
+    /* 3. TÍTULOS DE SECCIÓN — entrada lateral izquierda → centro */
+    .px-title {
+      opacity: 0;
+      transform: translateX(-22px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+      will-change: transform, opacity;
+    }
+    .px-title.px-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* 4. SECTION LABEL (la línea encima del título) — entra un
+       pelín antes con delay negativo para reforzar la secuencia */
+    .px-label {
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 0.45s ease,
+                  transform 0.45s ease;
+      will-change: transform, opacity;
+    }
+    .px-label.px-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* 5. PANEL "WHY US" — la columna derecha entra desde la derecha */
+    .px-from-right {
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+      transition-delay: 0.15s;
+      will-change: transform, opacity;
+    }
+    .px-from-right.px-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* 6. STATS NUMBERS — pop-in desde abajo con rebote */
+    .px-stat {
+      opacity: 0;
+      transform: translateY(18px) scale(0.95);
+      transition: opacity 0.5s ease,
+                  transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      will-change: transform, opacity;
+    }
+    .px-stat.px-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .px-stat:nth-child(2) { transition-delay: 0.08s; }
+    .px-stat:nth-child(3) { transition-delay: 0.16s; }
+    .px-stat:nth-child(4) { transition-delay: 0.24s; }
+
+    /* En móvil: todo visible desde el inicio, sin animaciones */
+    @media (max-width: 768px) {
+      .px-card, .px-title, .px-label, .px-from-right, .px-stat {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Preferencia del sistema: sin movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .px-card, .px-title, .px-label, .px-from-right, .px-stat {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .hero-bg { background-attachment: scroll !important; }
+    }
+
+    /* mobile menu */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn { display: none; }
+    }
+    #mobile-menu {
+      display: none;
+      background: rgba(10,10,10,0.98);
+      border-top: 1px solid var(--grid);
+    }
+    #mobile-menu.open { display: flex; flex-direction: column; }
+    #mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--light);
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--grid);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    #mobile-menu a:hover { color: var(--yellow); background: var(--plate); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+  <div class="safety-stripe"></div>
+  <div style="max-width:1200px; margin:auto; padding:0 20px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; height:64px;">
+      <!-- Logo -->
+      <a href="#inicio" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+        <span class="logo-icon">🏗️</span>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.25rem; letter-spacing:0.08em; color:var(--yellow); line-height:1;">C.H.E.M.A.</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:0.65rem; letter-spacing:0.18em; color:var(--light); text-transform:uppercase;">Andamios y Escaleras</div>
+        </div>
+      </a>
+      <!-- Desktop Nav -->
+      <nav class="nav-links" style="display:flex; gap:32px;">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#horario">Horario</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <!-- CTA -->
+      <a href="https://wa.me/51968367995?text=Hola,%20quisiera%20una%20cotizaci%C3%B3n%20de%20andamios" target="_blank" class="btn-cta" style="font-size:0.82rem; padding:10px 22px;" aria-label="Cotizar por WhatsApp">
+        <svg style="width:16px;height:16px;fill:white;" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+        Cotizar
+      </a>
+      <!-- Mobile menu btn -->
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('open')" style="background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;">
+        <span style="display:block;width:22px;height:2px;background:var(--light);"></span>
+        <span style="display:block;width:22px;height:2px;background:var(--light);"></span>
+        <span style="display:block;width:22px;height:2px;background:var(--light);"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="#inicio" onclick="document.getElementById('mobile-menu').classList.remove('open')">Inicio</a>
+    <a href="#productos" onclick="document.getElementById('mobile-menu').classList.remove('open')">Productos</a>
+    <a href="#ubicacion" onclick="document.getElementById('mobile-menu').classList.remove('open')">Ubicación</a>
+    <a href="#horario" onclick="document.getElementById('mobile-menu').classList.remove('open')">Horario</a>
+    <a href="#contacto" onclick="document.getElementById('mobile-menu').classList.remove('open')">Contacto</a>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section id="inicio" style="padding-top:70px;">
+  <div id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content" style="max-width:1200px; margin:auto; padding:80px 24px;">
+      <div style="max-width:700px;">
+        <div class="fade-up" style="margin-bottom:20px;">
+          <span class="hero-tag">Alquiler de Andamios y Escaleras — Chilca · Cañete · Sur de Lima</span>
+        </div>
+        <h1 class="hero-title fade-up delay-1">
+          <span>C.H.E.M.A.</span><br>
+          Andamios<br>y Escaleras
+        </h1>
+        <p class="hero-sub fade-up delay-2" style="margin-top:16px; margin-bottom:4px;">
+          Alquiler — Servicio profesional y confiable desde Chilca
+        </p>
+
+        <!-- Price badge -->
+        <div class="price-badge fade-up delay-2" style="margin-top:20px; margin-bottom:28px;">
+          <div>
+            <div class="price-label">Alquiler de andamios</div>
+            <div class="price-val">DESDE S/. 10 <span style="font-size:1rem; font-weight:600; color:var(--light);">/ cuerpo</span></div>
+          </div>
+        </div>
+
+        <div class="fade-up delay-3">
+          <a href="https://wa.me/51968367995?text=Hola,%20quisiera%20cotizar%20el%20alquiler%20de%20andamios%20o%20escaleras" target="_blank" class="btn-cta" style="font-size:1.05rem;">
+            <svg style="width:20px;height:20px;fill:white;flex-shrink:0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+            COTIZAR AHORA (WHATSAPP)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero bottom anchor -->
+    <div style="position:absolute; bottom:0; left:0; right:0; height:4px; background: repeating-linear-gradient(90deg, var(--yellow) 0px, var(--yellow) 20px, transparent 20px, transparent 40px);"></div>
+  </div>
+</section>
+
+<!-- ═══ STATS STRIP ═══ -->
+<div class="stats-strip">
+  <div style="max-width:1200px; margin:auto; padding:0 24px; display:flex; align-items:stretch;">
+    <div class="px-stat" style="flex:1; padding:22px 24px; text-align:center;">
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Obras Atendidas</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="px-stat" style="flex:1; padding:22px 24px; text-align:center;">
+      <div class="stat-num">S/.10</div>
+      <div class="stat-label">Alquiler / Cuerpo</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="px-stat" style="flex:1; padding:22px 24px; text-align:center;">
+      <div class="stat-num">6 MTS</div>
+      <div class="stat-label">Altura Máx. Escalera</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="px-stat" style="flex:1; padding:22px 24px; text-align:center;">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Zonas de Cobertura</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRODUCTOS ═══ -->
+<section id="productos" class="steel-bg" style="padding:96px 24px;">
+  <div style="max-width:1200px; margin:auto;">
+    <div style="margin-bottom:48px;">
+      <div class="section-label px-label" style="margin-bottom:12px;">Nuestros Equipos</div>
+      <h2 class="section-title px-title" style="max-width:500px;">
+        Equipos de <span style="color:var(--yellow);">Alta Calidad</span><br>para tu Obra
+      </h2>
+      <p style="color:var(--light); margin-top:14px; max-width:520px; line-height:1.7;">
+        Contamos con andamios y escaleras en óptimas condiciones, disponibles para alquiler en toda la zona sur de Lima. Operamos desde nuestro único local en Chilca.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;">
+
+      <!-- Card 1: Andamios -->
+      <div class="card px-card" style="padding:36px 30px;">
+        <div class="card-icon">🏗️</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.7rem; font-weight:900; text-transform:uppercase; margin-bottom:8px;">
+          Andamios Estándar
+        </h3>
+        <p style="color:var(--muted); font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:14px;">Fijos · Rodantes</p>
+        <p style="color:var(--light); font-size:0.9rem; line-height:1.7; margin-bottom:20px;">
+          Estructura tubular metálica de alta resistencia. Disponibles en versión fija para fachadas y rodante con ruedas bloqueables para interiores y obra civil.
+        </p>
+        <div style="margin-bottom:20px;">
+          <span class="spec-pill">Fijo</span>
+          <span class="spec-pill">Rodante</span>
+          <span class="spec-pill">Galvanizado</span>
+          <span class="spec-pill">Alta resistencia</span>
+        </div>
+        <div style="margin-bottom:24px;">
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Precio de Alquiler</div>
+          <div class="card-price">DESDE S/. 10 <span style="font-size:1rem; font-weight:600; color:var(--light);">/ cuerpo</span></div>
+        </div>
+        <a href="https://wa.me/51968367995?text=Hola,%20quiero%20m%C3%A1s%20detalles%20sobre%20los%20andamios" target="_blank" class="btn-outline">
+          <span>▶</span> VER DETALLES
+        </a>
+      </div>
+
+      <!-- Card 2: Escaleras Telescópicas -->
+      <div class="card px-card" style="padding:36px 30px;">
+        <div class="card-icon">📐</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.7rem; font-weight:900; text-transform:uppercase; margin-bottom:8px;">
+          Escaleras Telescópicas
+        </h3>
+        <p style="color:var(--muted); font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:14px;">Extensibles · Compactas</p>
+        <p style="color:var(--light); font-size:0.9rem; line-height:1.7; margin-bottom:20px;">
+          Sistema de extensión progresiva con peldaños antideslizantes. Ideales para trabajos en altura con acceso flexible. Fáciles de transportar y almacenar.
+        </p>
+        <div style="margin-bottom:20px;">
+          <span class="spec-pill">28 PASOS</span>
+        </div>
+        <div style="margin-bottom:24px;">
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Medida disponible</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; font-weight:900; color:var(--yellow);">28 PASOS</div>
+        </div>
+        <a href="https://wa.me/51968367995?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20escaleras%20telesc%C3%B3picas" target="_blank" class="btn-outline">
+          <span>▶</span> VER DETALLES
+        </a>
+      </div>
+
+      <!-- Card 3: Escaleras Tijeras -->
+      <div class="card px-card" style="padding:36px 30px;">
+        <div class="card-icon">🪜</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.7rem; font-weight:900; text-transform:uppercase; margin-bottom:8px;">
+          Escaleras Tijeras
+        </h3>
+        <p style="color:var(--muted); font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:14px;">Autoportantes · Seguras</p>
+        <p style="color:var(--light); font-size:0.9rem; line-height:1.7; margin-bottom:20px;">
+          Diseño autoportante en A, sin necesidad de apoyo en pared. Peldaños amplios antideslizantes y plataforma superior. Perfectas para trabajos en interiores y exteriores.
+        </p>
+        <div style="margin-bottom:20px;">
+          <span class="spec-pill">2 MTS</span>
+          <span class="spec-pill">3 MTS</span>
+          <span class="spec-pill">4 MTS</span>
+          <span class="spec-pill">5 MTS</span>
+          <span class="spec-pill">6 MTS</span>
+        </div>
+        <div style="margin-bottom:24px;">
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Medidas disponibles</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; font-weight:900; color:var(--yellow);">2 – 6 METROS</div>
+        </div>
+        <a href="https://wa.me/51968367995?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20escaleras%20tijeras" target="_blank" class="btn-outline">
+          <span>▶</span> VER MEDIDAS
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY US ═══ -->
+<section style="padding:80px 24px; background:var(--carbon);">
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div>
+      <div class="section-label px-label" style="margin-bottom:12px;">¿Por qué elegirnos?</div>
+      <h2 class="section-title px-title" style="margin-bottom:24px;">
+        Calidad Industrial,<br><span style="color:var(--yellow);">Precio Justo</span>
+      </h2>
+      <div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;margin-bottom:2px;">Entrega rápida en zona</div>
+            <div style="color:var(--light);font-size:0.88rem;">Cobertura directa en Chilca, Cañete y todo el Sur de Lima sin demoras.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;margin-bottom:2px;">Equipos en perfecto estado</div>
+            <div style="color:var(--light);font-size:0.88rem;">Revisión y mantenimiento constante de todos los andamios y escaleras.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;margin-bottom:2px;">Alquiler flexible y a tu medida</div>
+            <div style="color:var(--light);font-size:0.88rem;">Adaptamos plazos y cantidades a las necesidades de tu proyecto.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;margin-bottom:2px;">Atención directa y personalizada</div>
+            <div style="color:var(--light);font-size:0.88rem;">Empresa familiar con años de experiencia en el sector de la construcción.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right side graphic -->
+    <div style="position:relative;" class="px-from-right">
+      <div style="background:var(--plate); border:1px solid var(--grid); border-left:4px solid var(--yellow); padding:36px; position:relative;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:20px;">LOCAL ÚNICO · COBERTURA DE SERVICIO</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;">Chilca</div>
+              <div style="color:var(--muted);font-size:0.78rem;">Único local — Mz Y Lt 4, Calle Los Álamos | Av. Perú Olof Palme</div>
+            </div>
+          </div>
+          <div style="width:1px;height:20px;background:var(--grid);margin-left:20px;"></div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--grid);border:1px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🚚</div>
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;">Cañete</div>
+              <div style="color:var(--muted);font-size:0.78rem;">Servicio a toda la provincia desde Chilca</div>
+            </div>
+          </div>
+          <div style="width:1px;height:20px;background:var(--grid);margin-left:20px;"></div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--grid);border:1px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🚚</div>
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;">Sur de Lima</div>
+              <div style="color:var(--muted);font-size:0.78rem;">Cobertura de servicio — Punta Hermosa, Pucusana y más</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- decorative corner -->
+      <div style="position:absolute;bottom:-12px;right:-12px;width:70px;height:70px;background:var(--yellow);opacity:0.08;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ UBICACIÓN ═══ -->
+<section id="ubicacion" style="padding:96px 24px; background:var(--steel);">
+  <div style="max-width:1200px; margin:auto;">
+    <div style="margin-bottom:36px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>
+        <div class="section-label px-label" style="margin-bottom:12px;">Nuestra Ubicación</div>
+        <h2 class="section-title px-title">
+          Único local en <span style="color:var(--yellow);">Chilca</span>
+        </h2>
+        <p style="color:var(--light); margin-top:10px; font-size:0.95rem;">
+          Nuestro local está en <strong style="color:var(--white);">Mz Y Lt 4, Calle Los Álamos | Av. Olof Palme, Chilca.</strong><br>
+          Desde aquí damos cobertura de servicio a todo <strong style="color:var(--white);">Cañete y el Sur de Lima.</strong>
+        </p>
+      </div>
+      <a href="https://www.google.com/maps/place/C.H.E.M.A./@-12.465618,-76.7461749,363m/data=!3m1!1e3!4m6!3m5!1s0x91059f05f13b58b7:0xdae8fdf4c3ee97d5!8m2!3d-12.4658694!4d-76.7462232!16s%2Fg%2F11p5hym73g?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-outline">
+        📍 VER EN GOOGLE MAPS
+      </a>
+    </div>
+
+    <!-- ── MAPA INTERACTIVO REAL ── -->
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.7820014254167!2d-76.74617490000001!3d-12.4658694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91059f05f13b58b7%3A0xdae8fdf4c3ee97d5!2sC.H.E.M.A.!5e0!3m2!1ses!2spe!4v1711555200000!5m2!1ses!2spe"
+        width="100%"
+        height="100%"
+        style="border:0; display:block;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación C.H.E.M.A. Andamios y Escaleras — Chilca, Cañete">
+      </iframe>
+    </div>
+    <!-- nota al pie del mapa -->
+    <div style="margin-top:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span style="font-size:0.78rem; color:var(--muted);">📍 Mz Y Lt 4, Calle Los Álamos | Av. Olof Palme — Chilca, Cañete, Lima</span>
+      <span style="width:1px; height:14px; background:var(--grid);"></span>
+      <span style="font-size:0.78rem; color:var(--muted);">Usa los controles del mapa para hacer zoom o cambiar a vista de relieve (Terrain).</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HORARIO DE ATENCIÓN ═══ -->
+<section id="horario" style="padding:80px 24px; background:var(--carbon); position:relative; overflow:hidden;">
+  <!-- bg stripe accent -->
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 22px,rgba(23,105,95,0.025) 22px,rgba(23,105,95,0.025) 23px);pointer-events:none;"></div>
+
+  <div style="max-width:1200px; margin:auto; position:relative;">
+    <div style="margin-bottom:40px;">
+      <div class="section-label px-label" style="margin-bottom:12px;">Atención al Cliente</div>
+      <h2 class="section-title px-title">
+        Horario de <span style="color:var(--yellow);">Atención</span>
+      </h2>
+      <p style="color:var(--light); margin-top:10px; font-size:0.95rem; max-width:500px; line-height:1.7;">
+        Consulta nuestro horario actualizado. El indicador se actualiza en tiempo real según la hora de tu dispositivo.
+      </p>
+    </div>
+
+    <div class="horario-grid">
+
+      <!-- Tabla de horarios -->
+      <div class="horario-table">
+        <!-- Header tabla -->
+        <div style="background:var(--grid); padding:13px 22px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--yellow);">DÍA</span>
+          <span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--yellow);">HORARIO</span>
+        </div>
+
+        <!-- Fila Lunes -->
+        <div class="horario-row" id="row-1">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Lunes</span>
+            <span class="today-tag" id="tag-1" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Martes -->
+        <div class="horario-row" id="row-2">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Martes</span>
+            <span class="today-tag" id="tag-2" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Miércoles -->
+        <div class="horario-row" id="row-3">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Miércoles</span>
+            <span class="today-tag" id="tag-3" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Jueves -->
+        <div class="horario-row" id="row-4">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Jueves</span>
+            <span class="today-tag" id="tag-4" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Viernes -->
+        <div class="horario-row" id="row-5">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Viernes</span>
+            <span class="today-tag" id="tag-5" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Sábado -->
+        <div class="horario-row" id="row-6">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Sábado</span>
+            <span class="today-tag" id="tag-6" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-hora">07:00 a.m. – 06:30 p.m.</span>
+        </div>
+        <!-- Fila Domingo -->
+        <div class="horario-row" id="row-0">
+          <div style="display:flex; align-items:center;">
+            <span class="horario-dia">Domingo</span>
+            <span class="today-tag" id="tag-0" style="display:none;">▶ HOY</span>
+          </div>
+          <span class="horario-cerrado">CERRADO</span>
+        </div>
+      </div>
+
+      <!-- Panel de estado en vivo -->
+      <div class="live-badge-wrap">
+
+        <!-- Badge dinámico -->
+        <div>
+          <div class="live-info-label" style="margin-bottom:12px;">Estado actual</div>
+          <div class="live-badge" id="live-badge">
+            <span class="live-dot" id="live-dot"></span>
+            <span id="live-text">Cargando...</span>
+          </div>
+        </div>
+
+        <div class="live-divider"></div>
+
+        <!-- Hora actual -->
+        <div>
+          <div class="live-info-label">Hora local del dispositivo</div>
+          <div class="live-info-val" id="live-clock">--:-- --</div>
+        </div>
+
+        <div class="live-divider"></div>
+
+        <!-- Día actual -->
+        <div>
+          <div class="live-info-label">Día de hoy</div>
+          <div class="live-info-val" id="live-day">---</div>
+        </div>
+
+        <div class="live-divider"></div>
+
+        <!-- Próxima apertura (si cerrado) -->
+        <div id="next-open-wrap">
+          <div class="live-info-label" id="next-open-label">Horario de atención</div>
+          <div class="live-info-val" id="next-open-val">07:00 a.m. – 06:30 p.m.</div>
+        </div>
+
+        <div class="live-divider"></div>
+
+        <!-- CTA -->
+        <a href="https://wa.me/51968367995?text=Hola!%20Quisiera%20cotizar%20el%20alquiler%20de%20andamios%20o%20escaleras." target="_blank" class="btn-cta" style="font-size:0.9rem; padding:13px 26px; align-self:flex-start;">
+          <svg style="width:16px;height:16px;fill:white;flex-shrink:0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+          COTIZAR POR WHATSAPP
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO / CTA BANNER ═══ -->
+<section id="contacto" style="padding:80px 24px; background:var(--carbon); position:relative; overflow:hidden;">
+  <!-- bg accent -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(23,105,95,0.10) 0%, transparent 65%);pointer-events:none;"></div>
+  <div style="max-width:900px; margin:auto; text-align:center; position:relative;">
+    <div class="section-label" style="justify-content:center; margin-bottom:16px;">Contáctanos Ahora</div>
+    <h2 class="section-title" style="font-size:clamp(2.2rem,6vw,4rem); margin-bottom:16px;">
+      ¿Listo para tu <span style="color:var(--yellow);">próximo proyecto</span>?
+    </h2>
+    <p style="color:var(--light); max-width:560px; margin:0 auto 36px; line-height:1.7;">
+      Cotiza sin compromiso. Respondemos por WhatsApp de inmediato. Atendemos pedidos de cualquier tamaño.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wa.me/51968367995?text=Hola,%20C.H.E.M.A.%20Andamios!%20Quisiera%20una%20cotizaci%C3%B3n." target="_blank" class="btn-cta" style="font-size:1.1rem; padding:18px 40px;">
+        <svg style="width:22px;height:22px;fill:white;flex-shrink:0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+        COTIZAR POR WHATSAPP
+      </a>
+      <a href="tel:+51968367995" class="btn-outline" style="padding:18px 32px; font-size:1rem;">
+        📞 968 367 995
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="padding:60px 24px 30px;">
+  <div style="max-width:1200px; margin:auto;">
+    <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:48px; flex-wrap:wrap;">
+      <!-- Col 1 -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <span style="font-size:2rem;">🏗️</span>
+          <div class="footer-logo">C.H.E.M.A.</div>
+        </div>
+        <p style="color:var(--muted); font-size:0.88rem; line-height:1.7; max-width:320px; margin-bottom:16px;">
+          Empresa familiar dedicada al alquiler de andamios y escaleras. Local único en Chilca, con cobertura de servicio a todo Cañete y el Sur de Lima.
+        </p>
+        <div class="footer-acro">
+          Una empresa de la familia:<br>
+          <strong>C</strong>ampos · <strong>H</strong>uamani · <strong>E</strong>rnesto · <strong>M</strong>aritza · <strong>A</strong>lfredo
+        </div>
+      </div>
+      <!-- Col 2 -->
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;">Navegación</div>
+        <a href="#inicio" class="footer-link">→ Inicio</a>
+        <a href="#productos" class="footer-link">→ Productos</a>
+        <a href="#ubicacion" class="footer-link">→ Ubicación</a>
+        <a href="#horario" class="footer-link">→ Horario</a>
+        <a href="#contacto" class="footer-link">→ Contacto</a>
+      </div>
+      <!-- Col 3 -->
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;">Contacto</div>
+        <a href="https://wa.me/51968367995?text=Hola%20C.H.E.M.A.!%20Quisiera%20una%20cotizaci%C3%B3n." target="_blank" class="footer-link">
+          <svg style="width:16px;height:16px;fill:#25D366;flex-shrink:0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+          WhatsApp: 968 367 995
+        </a>
+        <a href="tel:+51968367995" class="footer-link">
+          <svg style="width:16px;height:16px;fill:var(--yellow);flex-shrink:0" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          968 367 995 (Principal)
+        </a>
+        <a href="tel:+51990969601" class="footer-link">
+          <svg style="width:16px;height:16px;fill:var(--yellow);flex-shrink:0" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          990 969 601 (Secundario)
+        </a>
+        <div class="footer-link" style="cursor:default;">
+          <svg style="width:16px;height:16px;fill:var(--yellow);flex-shrink:0" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Mz Y Lt 4, Calle Los Álamos | Av. Olof Palme, Chilca, Cañete
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid var(--grid); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div style="font-size:0.78rem; color:var(--muted);">
+        © 2025 <span style="color:var(--yellow);">C.H.E.M.A. Andamios y Escaleras</span>. Todos los derechos reservados.
+      </div>
+      <div style="font-size:0.75rem; color:var(--muted);">
+        Chilca · Cañete · Sur de Lima
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<a href="https://wa.me/51968367995?text=Hola!%20Quisiera%20cotizar%20el%20alquiler%20de%20andamios%20o%20escaleras." target="_blank" class="wa-float" aria-label="Contactar por WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.845L0 24l6.335-1.508A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.036-1.384l-.361-.214-3.762.895.952-3.659-.235-.376A9.843 9.843 0 012.118 12C2.118 6.536 6.536 2.118 12 2.118c5.463 0 9.882 4.418 9.882 9.882 0 5.463-4.419 9.882-9.882 9.882z"/></svg>
+</a>
+
+<!-- ═══ SCRIPT: HORARIO DINÁMICO ═══ -->
+<script>
+  (function () {
+    // ── Configuración de horario ──────────────────────────────────────────
+    // Días laborales: 1=Lun … 6=Sáb. 0=Dom → cerrado
+    const OPEN_HOUR    = 7;     // 07:00
+    const CLOSE_HOUR   = 18;    // 18:00
+    const CLOSE_MIN    = 30;    // 18:30
+
+    const DIAS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+    function isOpen(now) {
+      const day  = now.getDay();         // 0=Dom
+      const hour = now.getHours();
+      const min  = now.getMinutes();
+      if (day === 0) return false;       // domingo cerrado
+      if (hour < OPEN_HOUR) return false;
+      if (hour > CLOSE_HOUR) return false;
+      if (hour === CLOSE_HOUR && min >= CLOSE_MIN) return false;
+      return true;
+    }
+
+    function formatTime(date) {
+      let h = date.getHours();
+      let m = date.getMinutes();
+      const ampm = h >= 12 ? 'p.m.' : 'a.m.';
+      h = h % 12 || 12;
+      return `${h}:${String(m).padStart(2,'0')} ${ampm}`;
+    }
+
+    function tick() {
+      const now  = new Date();
+      const day  = now.getDay();
+
+      // ── Reloj ────────────────────────────────────────────────────────
+      document.getElementById('live-clock').textContent = formatTime(now);
+
+      // ── Día ──────────────────────────────────────────────────────────
+      document.getElementById('live-day').textContent = DIAS_ES[day];
+
+      // ── Resaltar fila del día actual ─────────────────────────────────
+      // Limpia todos primero
+      for (let i = 0; i <= 6; i++) {
+        const row = document.getElementById('row-' + i);
+        const tag = document.getElementById('tag-' + i);
+        if (row) row.classList.remove('today');
+        if (tag) tag.style.display = 'none';
+      }
+      // Aplica al día de hoy
+      const todayRow = document.getElementById('row-' + day);
+      const todayTag = document.getElementById('tag-' + day);
+      if (todayRow) todayRow.classList.add('today');
+      if (todayTag) todayTag.style.display = 'inline-flex';
+
+      // ── Badge abierto / cerrado ───────────────────────────────────────
+      const badge    = document.getElementById('live-badge');
+      const liveText = document.getElementById('live-text');
+      const liveDot  = document.getElementById('live-dot');
+
+      if (isOpen(now)) {
+        badge.className   = 'live-badge abierto';
+        liveText.textContent = 'ABIERTO AHORA';
+        liveDot.className = 'live-dot';
+        document.getElementById('next-open-label').textContent = 'Cierra hoy a las';
+        document.getElementById('next-open-val').textContent   = '06:30 p.m.';
+      } else {
+        badge.className   = 'live-badge cerrado';
+        liveText.textContent = 'CERRADO AHORA';
+        liveDot.className = 'live-dot';
+        document.getElementById('next-open-label').textContent = 'Próxima apertura';
+        // Calcular próximo día hábil
+        let nextDay = (day + 1) % 7;
+        let daysAhead = 1;
+        while (nextDay === 0) { // si cae domingo, saltamos al lunes
+          nextDay = (nextDay + 1) % 7;
+          daysAhead++;
+        }
+        if (day === 0) {
+          // Hoy es domingo → abre mañana (lunes)
+          document.getElementById('next-open-val').textContent = 'Lunes 07:00 a.m.';
+        } else if (day === 6) {
+          // Hoy es sábado
+          const h = now.getHours(), m = now.getMinutes();
+          const pastClose = (h > CLOSE_HOUR) || (h === CLOSE_HOUR && m >= CLOSE_MIN);
+          document.getElementById('next-open-val').textContent = pastClose ? 'Lunes 07:00 a.m.' : '07:00 a.m. hoy';
+        } else {
+          // Día hábil fuera de horario
+          const h = now.getHours(), m = now.getMinutes();
+          const beforeOpen = h < OPEN_HOUR;
+          document.getElementById('next-open-val').textContent = beforeOpen
+            ? 'Hoy 07:00 a.m.'
+            : `${DIAS_ES[(day + 1) % 7]} 07:00 a.m.`;
+        }
+      }
+    }
+
+    // Ejecuta al cargar y luego cada 30 segundos
+    tick();
+    setInterval(tick, 30000);
+  })();
+</script>
+
+<!-- responsive grid fix -->
+<style>
+  @media (max-width: 768px) {
+    footer > div > div:first-child { grid-template-columns: 1fr !important; }
+    #hero .hero-content { padding: 60px 20px !important; }
+    .stats-strip > div { flex-wrap: wrap; }
+    .stats-strip > div > div { min-width: 45%; }
+    #ubicacion > div > div:first-child { flex-direction: column; align-items: flex-start !important; }
+    section > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<!-- ═══ PARALLAX — INTERSECTION OBSERVER ═══
+     Solo activo en desktop (≥ 769px) y cuando el usuario
+     no ha solicitado "prefers-reduced-motion".
+     Sin librerías externas. Peso total: ~1 KB.
+-->
+<script>
+(function () {
+  /* ── Guarda de seguridad: no corre en móvil ni con reduced-motion ── */
+  const isDesktop    = window.matchMedia('(min-width: 769px)').matches;
+  const noMotion     = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!isDesktop || noMotion) return;
+
+  /* ── 1. Intersection Observer para fade/slide-in ────────────────── */
+  const IO_OPTIONS = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',   /* dispara 60px antes de que entre en vista */
+    threshold: 0.12
+  };
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('px-visible');
+        observer.unobserve(entry.target); /* dispara una sola vez → sin overhead */
+      }
+    });
+  }, IO_OPTIONS);
+
+  /* Registra todos los elementos con clases parallax */
+  document.querySelectorAll(
+    '.px-card, .px-title, .px-label, .px-from-right, .px-stat'
+  ).forEach(function (el) {
+    observer.observe(el);
+  });
+
+  /* ── 2. Hero parallax scroll — translateY en la capa .hero-bg ───── */
+  /* background-attachment:fixed ya lo maneja CSS para navegadores
+     de escritorio modernos. Este bloque añade un parallax de
+     profundidad ADICIONAL al contenido del hero (texto) para
+     reforzar la sensación de capas.                                    */
+  var heroBg      = document.querySelector('.hero-bg');
+  var heroContent = document.querySelector('.hero-content');
+  var heroSection = document.getElementById('hero');
+  var ticking     = false;
+
+  function onScroll () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var scrollY    = window.scrollY;
+        var heroBottom = heroSection.offsetHeight;
+
+        /* Solo mientras el hero es visible */
+        if (scrollY <= heroBottom) {
+          /* Fondo: se mueve al 30% de la velocidad del scroll
+             (movimiento lento = sensación de lejanía / profundidad) */
+          heroBg.style.transform = 'translateY(' + (scrollY * 0.30) + 'px)';
+
+          /* Texto: se aleja levemente más rápido → crea separación de capas */
+          heroContent.style.transform = 'translateY(' + (scrollY * 0.12) + 'px)';
+        }
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Limpieza si el hero sale de la vista para no calcular innecesariamente */
+  var heroObserver = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) {
+      window.removeEventListener('scroll', onScroll);
+      /* Resetea transforms para no dejar offsets residuales */
+      heroBg.style.transform      = '';
+      heroContent.style.transform = '';
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  }, { threshold: 0 });
+  heroObserver.observe(heroSection);
+
+})();
+</script>
+
+</body>
+</html>
